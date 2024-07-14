@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -40,6 +41,6 @@ public class Movie {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "movie", orphanRemoval = true, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "movies",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Author> authors;
 }
