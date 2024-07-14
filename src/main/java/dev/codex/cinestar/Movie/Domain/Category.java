@@ -22,4 +22,9 @@ public class Category {
 
     @OneToMany(mappedBy = "category", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Movie> movies;
+
+    public Category(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }

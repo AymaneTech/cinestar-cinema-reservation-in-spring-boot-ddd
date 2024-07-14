@@ -1,5 +1,7 @@
-package dev.codex.cinestar.Movie.Application;
+package dev.codex.cinestar.Movie.Application.Services.Impl;
 
+import dev.codex.cinestar.Movie.Application.Dtos.AuthorRequest;
+import dev.codex.cinestar.Movie.Application.Services.AuthorService;
 import dev.codex.cinestar.Movie.Domain.Author;
 import dev.codex.cinestar.Movie.Infrastructure.AuthorRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class AuthorService {
+class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository repository;
 
     public List<Author> createAll(List<AuthorRequest> authors) {

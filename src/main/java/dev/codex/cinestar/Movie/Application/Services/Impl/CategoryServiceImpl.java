@@ -1,9 +1,11 @@
-package dev.codex.cinestar.Movie.Application;
+package dev.codex.cinestar.Movie.Application.Services.Impl;
 
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
+import dev.codex.cinestar.Movie.Application.Dtos.CategoryRequest;
 import dev.codex.cinestar.Movie.Domain.Category;
 import dev.codex.cinestar.Movie.Infrastructure.CategoryRepository;
+import dev.codex.cinestar.Movie.Application.Services.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryService {
+class CategoryServiceImpl implements CategoryService {
 
     private final Mapper mapper = DozerBeanMapperBuilder.buildDefault();
     private final CategoryRepository repository;
@@ -25,9 +27,7 @@ public class CategoryService {
     }
 
     public Category create(CategoryRequest dto) {
-        Category category = mapper.map(dto, Category.class);
-        assert category.getName().equals(dto.name());
-        assert category.getDescription().equals(dto.description());
+        Category category = new Category(dto.name(), dto.description());
         return repository.save(category);
     }
 

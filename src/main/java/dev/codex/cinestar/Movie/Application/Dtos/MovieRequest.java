@@ -1,4 +1,4 @@
-package dev.codex.cinestar.Movie.Application;
+package dev.codex.cinestar.Movie.Application.Dtos;
 
 import dev.codex.cinestar.Movie.Domain.MovieType;
 
