@@ -29,6 +29,24 @@ public class MovieController {
         Movie movie = service.findById(id);
         return ResponseEntity.ok(movie);
     }
+    
+    @GetMapping("/filter/title")
+    public ResponseEntity<List<Movie>> filterByTitle(@RequestParam String title) {
+        List<Movie> movies = service.filterByTitle(title);
+        return ResponseEntity.ok(movies);
+    }
+
+    @GetMapping("/filter/category")
+    public ResponseEntity<List<Movie>> filterByCategory(@RequestParam String category) {
+        List<Movie> movies = service.filterByCategory(category);
+        return ResponseEntity.ok(movies);
+    }
+
+    @GetMapping("/filter/type")
+    public ResponseEntity<List<Movie>> filterByMovieType(@RequestParam MovieType type) {
+        List<Movie> movies = service.filterByMovieType(type);
+        return ResponseEntity.ok(movies);
+    }
 
     @PostMapping
     public ResponseEntity<Movie> create(@RequestBody @Validated MovieRequest dto) {
