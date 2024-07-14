@@ -6,4 +6,5 @@ import dev.codex.cinestar.Movie.Domain.Category;
 import java.util.List;
 
 public interface CategoryService extends CrudService<Category, Long, CategoryRequest>{
+    Category findByName(String categoryName);
 }
