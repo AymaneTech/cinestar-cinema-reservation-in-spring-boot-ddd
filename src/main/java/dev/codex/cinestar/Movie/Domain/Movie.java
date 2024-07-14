@@ -7,7 +7,8 @@ import lombok.Setter;
 import java.util.Date;
 import java.util.List;
 
-@Getter @Setter
+@Getter
+@Setter
 
 @Entity
 @Table(name = "movies")
@@ -31,6 +32,9 @@ public class Movie {
     private String language;
 
     private String country;
+
+    @Enumerated(EnumType.STRING)
+    private MovieType type;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
