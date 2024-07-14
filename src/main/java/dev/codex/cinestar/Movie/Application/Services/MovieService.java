@@ -5,10 +5,12 @@ import dev.codex.cinestar.Movie.Domain.Movie;
 
 import java.util.List;
 
-public interface MovieService {
-    List<Movie> findAll();
-    Movie findById(Long id);
-    Movie create(MovieRequest dto);
-    Movie update(Long id, MovieRequest dto);
-    void delete(Long id);
+public interface MovieService extends CrudService<Movie, Long, MovieRequest> {
+    List<Movie> filterByName(String name);
+
+    List<Movie> filterByCategory(String categoryName);
+
+    List<Movie> filterByMovieType(String type);
+
+    List<Movie> filterByAuthor(String type);
 }

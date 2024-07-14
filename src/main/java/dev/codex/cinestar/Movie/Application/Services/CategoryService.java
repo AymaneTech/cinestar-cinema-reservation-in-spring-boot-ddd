@@ -5,10 +5,5 @@ import dev.codex.cinestar.Movie.Domain.Category;
 
 import java.util.List;
 
-public interface CategoryService {
-    List<Category> findAll();
-    Category findById(Long id);
-    Category create(CategoryRequest dto);
-    Category update(Long id, CategoryRequest dto);
-    void delete(Long id);
+public interface CategoryService extends CrudService<Category, Long, CategoryRequest>{
 }
