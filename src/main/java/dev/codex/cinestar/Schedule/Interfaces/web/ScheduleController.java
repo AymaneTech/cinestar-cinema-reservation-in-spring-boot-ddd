@@ -20,26 +20,22 @@ public class ScheduleController {
 
     @GetMapping
     public ResponseEntity<List<Schedule>> findAll() {
-        List<Schedule> schedules = service.findAll();
-        return ResponseEntity.ok(schedules);
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Schedule> findById(@PathVariable Long id) {
-        Schedule schedule = service.findById(id);
-        return ResponseEntity.ok(schedule);
+        return ResponseEntity.ok(service.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Schedule> create(@RequestBody @Valid ScheduleRequest dto) {
-        Schedule createdSchedule = service.create(dto);
-        return new ResponseEntity<>(createdSchedule, HttpStatus.CREATED);
+    public ResponseEntity<Schedule> create(@RequestBody @Valid ScheduleRequest request) {
+        return new ResponseEntity<>(service.create(request), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Schedule> update(@PathVariable Long id, @RequestBody @Valid ScheduleRequest dto) {
-        Schedule schedule = service.update(id, dto);
-        return ResponseEntity.ok(schedule);
+    public ResponseEntity<Schedule> update(@PathVariable Long id, @RequestBody @Valid ScheduleRequest request) {
+        return ResponseEntity.ok(service.update(id, request));
     }
 
     @DeleteMapping("/{id}")
