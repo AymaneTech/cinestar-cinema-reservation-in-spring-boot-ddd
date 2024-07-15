@@ -1,6 +1,6 @@
 package dev.codex.cinestar.Room.Application.Services.Impl;
 
-import dev.codex.cinestar.Room.Application.DTOs.ZoneRequest;
+import dev.codex.cinestar.Room.Application.DTOs.Requests.ZoneRequest;
 import dev.codex.cinestar.Room.Application.Services.ZoneService;
 import dev.codex.cinestar.Room.Domain.Entities.Room;
 import dev.codex.cinestar.Room.Domain.Entities.Zone;

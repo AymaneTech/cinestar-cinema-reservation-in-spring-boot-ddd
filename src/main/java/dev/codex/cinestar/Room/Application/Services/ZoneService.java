@@ -1,7 +1,6 @@
 package dev.codex.cinestar.Room.Application.Services;
 
-import dev.codex.cinestar.Common.Contracts.CrudService;
-import dev.codex.cinestar.Room.Application.DTOs.ZoneRequest;
+import dev.codex.cinestar.Room.Application.DTOs.Requests.ZoneRequest;
 import dev.codex.cinestar.Room.Domain.Entities.Room;
 import dev.codex.cinestar.Room.Domain.Entities.Zone;
 

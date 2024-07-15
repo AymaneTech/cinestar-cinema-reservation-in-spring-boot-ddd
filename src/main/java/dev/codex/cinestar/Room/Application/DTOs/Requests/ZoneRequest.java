@@ -1,4 +1,4 @@
-package dev.codex.cinestar.Room.Application.DTOs;
+package dev.codex.cinestar.Room.Application.DTOs.Requests;
 
 import dev.codex.cinestar.Room.Domain.ValueObjects.ZonePosition;
 import jakarta.validation.constraints.NotBlank;

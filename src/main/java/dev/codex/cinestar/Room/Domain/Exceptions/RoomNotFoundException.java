@@ -8,7 +8,7 @@ public class RoomNotFoundException extends RuntimeException {
         this.id = id;
     }
 
-    public Long getId() {
+    public Long getRoomId() {
         return id;
     }
 }

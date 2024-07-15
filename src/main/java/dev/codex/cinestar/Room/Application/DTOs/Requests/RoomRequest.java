@@ -1,4 +1,4 @@
-package dev.codex.cinestar.Room.Application.DTOs;
+package dev.codex.cinestar.Room.Application.DTOs.Requests;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

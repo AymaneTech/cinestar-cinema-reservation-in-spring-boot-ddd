@@ -1,6 +1,6 @@
 package dev.codex.cinestar.Room.Application.Services.Impl;
 
-import dev.codex.cinestar.Room.Application.DTOs.RoomRequest;
+import dev.codex.cinestar.Room.Application.DTOs.Requests.RoomRequest;
 import dev.codex.cinestar.Room.Application.Services.RoomService;
 import dev.codex.cinestar.Room.Application.Services.ZoneService;
 import dev.codex.cinestar.Room.Domain.Entities.Room;
@@ -8,9 +8,11 @@ import dev.codex.cinestar.Room.Domain.Entities.Zone;
 import dev.codex.cinestar.Room.Domain.Exceptions.RoomNotFoundException;
 import dev.codex.cinestar.Room.Infrastructure.RoomRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 @RequiredArgsConstructor
 class RoomServiceImpl implements RoomService {
 
