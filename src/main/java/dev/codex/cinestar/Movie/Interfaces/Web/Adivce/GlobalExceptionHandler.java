@@ -1,5 +1,6 @@
-package dev.codex.cinestar.Common.Exceptions;
+package dev.codex.cinestar.Movie.Interfaces.Web.Adivce;
 
+import dev.codex.cinestar.Common.Models.ErrorResponse;
 import dev.codex.cinestar.Movie.Domain.Exceptions.CategoryNotFoundException;
 import dev.codex.cinestar.Movie.Domain.Exceptions.MovieNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -49,14 +50,21 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(CategoryNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleCategoryNotFoundException(CategoryNotFoundException ex) {
+        Map<String, String> details = new HashMap<>();
+        details.put("message", ex.getMessage());
+
+        if (ex.getCategoryId() != null) {
+            details.put("categoryId", ex.getCategoryId().toString());
+        }
+
+        if (ex.getCategoryName() != null) {
+            details.put("categoryName", ex.getCategoryName());
+        }
+
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.NOT_FOUND.value(),
-                "Movie not found",
-                Map.of(
-                        "message", ex.getMessage(),
-                        "category id", ex.getCategoryId().toString(),
-                        "category name", ex.getCategoryName()
-                )
+                "Category not found",
+                details
         );
 
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);

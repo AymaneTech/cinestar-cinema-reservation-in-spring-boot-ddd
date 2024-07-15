@@ -22,6 +22,7 @@ public class Movie {
     @GeneratedValue
     private Long id;
 
+    @Column(unique = true)
     private String title;
 
     private String description;
