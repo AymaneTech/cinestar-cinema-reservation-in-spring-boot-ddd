@@ -1,6 +1,6 @@
 package dev.codex.cinestar.Movie.Infrastructure;
 
-import dev.codex.cinestar.Movie.Domain.Author;
+import dev.codex.cinestar.Movie.Domain.Entities.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

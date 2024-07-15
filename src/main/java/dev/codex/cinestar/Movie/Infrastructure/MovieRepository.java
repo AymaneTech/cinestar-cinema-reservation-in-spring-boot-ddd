@@ -1,8 +1,8 @@
 package dev.codex.cinestar.Movie.Infrastructure;
 
-import dev.codex.cinestar.Movie.Domain.Category;
-import dev.codex.cinestar.Movie.Domain.Movie;
-import dev.codex.cinestar.Movie.Domain.MovieType;
+import dev.codex.cinestar.Movie.Domain.Entities.Category;
+import dev.codex.cinestar.Movie.Domain.Entities.Movie;
+import dev.codex.cinestar.Movie.Domain.ValueObjects.MovieType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

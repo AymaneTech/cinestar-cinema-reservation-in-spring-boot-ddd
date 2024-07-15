@@ -1,5 +1,6 @@
-package dev.codex.cinestar.Movie.Domain;
+package dev.codex.cinestar.Movie.Domain.Entities;
 
+import dev.codex.cinestar.Movie.Domain.ValueObjects.MovieType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 
 @Entity

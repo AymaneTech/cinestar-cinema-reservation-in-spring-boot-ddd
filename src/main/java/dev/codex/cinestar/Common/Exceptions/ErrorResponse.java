@@ -1,4 +1,4 @@
-package dev.codex.cinestar.Common;
+package dev.codex.cinestar.Common.Exceptions;
 
 import java.util.Map;
 

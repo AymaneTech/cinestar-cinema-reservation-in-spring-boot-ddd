@@ -1,8 +1,8 @@
 package dev.codex.cinestar.Movie.Application.Services;
 
 import dev.codex.cinestar.Movie.Application.Dtos.MovieRequest;
-import dev.codex.cinestar.Movie.Domain.Movie;
-import dev.codex.cinestar.Movie.Domain.MovieType;
+import dev.codex.cinestar.Movie.Domain.Entities.Movie;
+import dev.codex.cinestar.Movie.Domain.ValueObjects.MovieType;
 
 import java.util.List;
 

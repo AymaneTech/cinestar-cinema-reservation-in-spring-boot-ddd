@@ -1,4 +1,4 @@
-package dev.codex.cinestar.Movie.Domain;
+package dev.codex.cinestar.Movie.Domain.ValueObjects;
 
 public enum MovieType {
     ACTION,

@@ -2,7 +2,7 @@ package dev.codex.cinestar.Movie.Application.Services.Impl;
 
 import dev.codex.cinestar.Movie.Application.Dtos.AuthorRequest;
 import dev.codex.cinestar.Movie.Application.Services.AuthorService;
-import dev.codex.cinestar.Movie.Domain.Author;
+import dev.codex.cinestar.Movie.Domain.Entities.Author;
 import dev.codex.cinestar.Movie.Infrastructure.AuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -3,9 +3,10 @@ package dev.codex.cinestar.Movie.Application.Services.Impl;
 import dev.codex.cinestar.Movie.Application.Dtos.MovieRequest;
 import dev.codex.cinestar.Movie.Application.Services.CategoryService;
 import dev.codex.cinestar.Movie.Application.Services.MovieService;
-import dev.codex.cinestar.Movie.Domain.Category;
-import dev.codex.cinestar.Movie.Domain.Movie;
-import dev.codex.cinestar.Movie.Domain.MovieType;
+import dev.codex.cinestar.Movie.Domain.Entities.Category;
+import dev.codex.cinestar.Movie.Domain.Entities.Movie;
+import dev.codex.cinestar.Movie.Domain.Exceptions.MovieNotFoundException;
+import dev.codex.cinestar.Movie.Domain.ValueObjects.MovieType;
 import dev.codex.cinestar.Movie.Infrastructure.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie findById(Long id) {
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Movie not found"));
+        return repository.findById(id).orElseThrow(() -> new MovieNotFoundException(id));
     }
 
     @Override
@@ -39,7 +40,7 @@ class MovieServiceImpl implements MovieService {
     @Override
     public Movie update(Long id, MovieRequest dto) {
         Movie existingMovie = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Movie not found"));
+                .orElseThrow(() -> new MovieNotFoundException(id));
         existingMovie.setTitle(dto.title());
         existingMovie.setDescription(dto.description());
         existingMovie.setDirector(dto.director());
@@ -56,7 +57,7 @@ class MovieServiceImpl implements MovieService {
     @Override
     public void delete(Long id) {
         if (!repository.existsById(id))
-            throw new RuntimeException("Movie not found");
+            throw new MovieNotFoundException(id);
         repository.deleteById(id);
     }
 

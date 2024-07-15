@@ -1,4 +1,4 @@
-package dev.codex.cinestar.Movie.Domain;
+package dev.codex.cinestar.Movie.Domain.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -9,31 +9,27 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Getter
 @Setter
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
 
 @Entity
-@Table(name = "authors")
-public class Author {
-
+@Table(name = "categories")
+public class Category {
     @Id
     @GeneratedValue
     private Long id;
 
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "author_movie",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id")
-    )
+    private String description;
+
+    @OneToMany(mappedBy = "category", orphanRemoval = true, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Movie> movies;
 
-    public Author(String name) {
+    public Category(String name, String description) {
         this.name = name;
+        this.description = description;
     }
 }

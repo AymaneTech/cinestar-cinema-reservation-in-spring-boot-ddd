@@ -2,7 +2,8 @@ package dev.codex.cinestar.Movie.Application.Services.Impl;
 
 import dev.codex.cinestar.Movie.Application.Dtos.CategoryRequest;
 import dev.codex.cinestar.Movie.Application.Services.CategoryService;
-import dev.codex.cinestar.Movie.Domain.Category;
+import dev.codex.cinestar.Movie.Domain.Entities.Category;
+import dev.codex.cinestar.Movie.Domain.Exceptions.CategoryNotFoundException;
 import dev.codex.cinestar.Movie.Infrastructure.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,13 +24,13 @@ class CategoryServiceImpl implements CategoryService {
     @Override
     public Category findById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Category not found"));
+                .orElseThrow(() -> new CategoryNotFoundException(id));
     }
 
     @Override
     public Category findByName(String categoryName) {
         return repository.findByName(categoryName)
-                .orElseThrow(() -> new RuntimeException("category not found"));
+                .orElseThrow(() -> new CategoryNotFoundException(categoryName));
     }
 
     @Override
@@ -41,7 +42,7 @@ class CategoryServiceImpl implements CategoryService {
     @Override
     public Category update(Long id, CategoryRequest dto) {
         Category category = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Category not found"));
+                .orElseThrow(() -> new CategoryNotFoundException(id));
         category.setName(dto.name());
         category.setDescription(category.getDescription());
         return repository.save(category);
@@ -50,7 +51,7 @@ class CategoryServiceImpl implements CategoryService {
     @Override
     public void delete(Long id) {
         if (!repository.existsById(id))
-            throw new RuntimeException("Category not found");
+            throw new CategoryNotFoundException(id);
 
         repository.deleteById(id);
     }
