@@ -1,6 +1,6 @@
 package dev.codex.cinestar.Movie.Interfaces.Web;
 
-import dev.codex.cinestar.Movie.Application.Dtos.CategoryRequest;
+import dev.codex.cinestar.Movie.Application.DTOs.Requests.CategoryRequest;
 import dev.codex.cinestar.Movie.Application.Services.CategoryService;
 import dev.codex.cinestar.Movie.Domain.Entities.Category;
 import jakarta.validation.Valid;

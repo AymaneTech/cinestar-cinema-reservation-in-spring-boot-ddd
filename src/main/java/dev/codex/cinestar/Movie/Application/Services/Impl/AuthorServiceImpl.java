@@ -1,6 +1,6 @@
 package dev.codex.cinestar.Movie.Application.Services.Impl;
 
-import dev.codex.cinestar.Movie.Application.Dtos.AuthorRequest;
+import dev.codex.cinestar.Movie.Application.DTOs.Requests.AuthorRequest;
 import dev.codex.cinestar.Movie.Application.Services.AuthorService;
 import dev.codex.cinestar.Movie.Domain.Entities.Author;
 import dev.codex.cinestar.Movie.Infrastructure.AuthorRepository;

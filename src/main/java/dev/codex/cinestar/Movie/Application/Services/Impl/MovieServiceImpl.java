@@ -1,6 +1,6 @@
 package dev.codex.cinestar.Movie.Application.Services.Impl;
 
-import dev.codex.cinestar.Movie.Application.Dtos.MovieRequest;
+import dev.codex.cinestar.Movie.Application.DTOs.Requests.MovieRequest;
 import dev.codex.cinestar.Movie.Application.Services.CategoryService;
 import dev.codex.cinestar.Movie.Application.Services.MovieService;
 import dev.codex.cinestar.Movie.Domain.Entities.Category;

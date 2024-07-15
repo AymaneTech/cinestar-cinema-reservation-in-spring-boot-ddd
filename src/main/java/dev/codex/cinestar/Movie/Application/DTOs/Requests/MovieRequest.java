@@ -1,4 +1,4 @@
-package dev.codex.cinestar.Movie.Application.Dtos;
+package dev.codex.cinestar.Movie.Application.DTOs.Requests;
 
 import dev.codex.cinestar.Movie.Domain.ValueObjects.MovieType;
 import jakarta.validation.constraints.NotBlank;

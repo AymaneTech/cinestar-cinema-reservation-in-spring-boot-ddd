@@ -1,6 +1,7 @@
 package dev.codex.cinestar.Movie.Application.Services;
 
-import dev.codex.cinestar.Movie.Application.Dtos.MovieRequest;
+import dev.codex.cinestar.Common.Contracts.CrudService;
+import dev.codex.cinestar.Movie.Application.DTOs.Requests.MovieRequest;
 import dev.codex.cinestar.Movie.Domain.Entities.Movie;
 import dev.codex.cinestar.Movie.Domain.ValueObjects.MovieType;
 

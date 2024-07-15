@@ -1,6 +1,6 @@
 package dev.codex.cinestar.Movie.Interfaces.Web;
 
-import dev.codex.cinestar.Movie.Application.Dtos.MovieRequest;
+import dev.codex.cinestar.Movie.Application.DTOs.Requests.MovieRequest;
 import dev.codex.cinestar.Movie.Application.Services.MovieService;
 import dev.codex.cinestar.Movie.Domain.Entities.Movie;
 import dev.codex.cinestar.Movie.Domain.ValueObjects.MovieType;

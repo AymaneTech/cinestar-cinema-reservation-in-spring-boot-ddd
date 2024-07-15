@@ -1,4 +1,4 @@
-package dev.codex.cinestar.Movie.Application.Services;
+package dev.codex.cinestar.Common.Contracts;
 
 import java.util.List;
 

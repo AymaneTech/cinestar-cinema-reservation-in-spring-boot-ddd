@@ -21,6 +21,8 @@ public class Zone {
 
     private String name;
 
+    private String description;
+
     private Long capacity;
 
     private Long price;
