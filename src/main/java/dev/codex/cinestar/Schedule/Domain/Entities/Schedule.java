@@ -41,5 +41,15 @@ public class Schedule {
     private String endTime;
 
     @Column(name = "is_full")
-    private Boolean isFull;
+    private Boolean isFull = false;
+
+    public Schedule(Movie movie, Room room, ScheduleStatus status, Date scheduleDate, String startTime, String endTime, Boolean isFull) {
+        this.movie = movie;
+        this.room = room;
+        this.status = status;
+        this.scheduleDate = scheduleDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.isFull = isFull;
+    }
 }
