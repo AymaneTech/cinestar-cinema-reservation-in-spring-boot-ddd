@@ -12,6 +12,7 @@ public class ModularityTests {
     @Test
     @DisplayName("test the application modularity")
     void modulesShouldBeDefined() {
+        
         modules.verify();
     }
 }
