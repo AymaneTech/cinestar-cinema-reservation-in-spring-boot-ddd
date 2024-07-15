@@ -1,7 +1,5 @@
 package dev.codex.cinestar.Movie.Application.Services.Impl;
 
-import com.github.dozermapper.core.DozerBeanMapperBuilder;
-import com.github.dozermapper.core.Mapper;
 import dev.codex.cinestar.Movie.Application.Dtos.CategoryRequest;
 import dev.codex.cinestar.Movie.Application.Services.CategoryService;
 import dev.codex.cinestar.Movie.Domain.Category;
@@ -16,7 +14,6 @@ import java.util.List;
 class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository repository;
-    private final Mapper mapper = DozerBeanMapperBuilder.buildDefault();
 
     @Override
     public List<Category> findAll() {
@@ -43,7 +40,8 @@ class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category update(Long id, CategoryRequest dto) {
-        Category category = repository.findById(id).orElseThrow(() -> new RuntimeException("Category not found"));
+        Category category = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
         category.setName(dto.name());
         category.setDescription(category.getDescription());
         return repository.save(category);

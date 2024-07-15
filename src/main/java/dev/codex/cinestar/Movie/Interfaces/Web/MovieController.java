@@ -3,6 +3,7 @@ package dev.codex.cinestar.Movie.Interfaces.Web;
 import dev.codex.cinestar.Movie.Application.Dtos.MovieRequest;
 import dev.codex.cinestar.Movie.Application.Services.MovieService;
 import dev.codex.cinestar.Movie.Domain.Movie;
+import dev.codex.cinestar.Movie.Domain.MovieType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

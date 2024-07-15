@@ -1,7 +1,5 @@
 package dev.codex.cinestar.Movie.Application.Services.Impl;
 
-import com.github.dozermapper.core.DozerBeanMapperBuilder;
-import com.github.dozermapper.core.Mapper;
 import dev.codex.cinestar.Movie.Application.Dtos.MovieRequest;
 import dev.codex.cinestar.Movie.Application.Services.CategoryService;
 import dev.codex.cinestar.Movie.Application.Services.MovieService;
@@ -21,7 +19,6 @@ class MovieServiceImpl implements MovieService {
     private final MovieRepository repository;
     private final CategoryService categoryService;
     private final AuthorServiceImpl authorService;
-    private final Mapper mapper = DozerBeanMapperBuilder.buildDefault();
 
     @Override
     public List<Movie> findAll() {
@@ -35,18 +32,24 @@ class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie create(MovieRequest dto) {
-        Movie movie = mapper.map(dto, Movie.class);
-        movie.setCategory(categoryService.findById(dto.categoryId()));
-        movie.setAuthors(authorService.createAll(dto.authors()));
+        Movie movie = map(dto);
         return repository.save(movie);
     }
 
     @Override
     public Movie update(Long id, MovieRequest dto) {
-        Movie existingMovie = repository.findById(id).orElseThrow(() -> new RuntimeException("Movie not found"));
-        mapper.map(dto, existingMovie);
+        Movie existingMovie = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Movie not found"));
+        existingMovie.setTitle(dto.title());
+        existingMovie.setDescription(dto.description());
+        existingMovie.setDirector(dto.director());
+        existingMovie.setLanguage(dto.language());
+        existingMovie.setReleaseYear(dto.releaseDate());
+        existingMovie.setDuration(dto.duration());
+        existingMovie.setType(dto.type());
         existingMovie.setCategory(categoryService.findById(dto.categoryId()));
         existingMovie.setAuthors(authorService.sync(dto.authors()));
+        existingMovie.setCountry(dto.country());
         return repository.save(existingMovie);
     }
 
@@ -71,6 +74,21 @@ class MovieServiceImpl implements MovieService {
     @Override
     public List<Movie> filterByMovieType(MovieType type) {
         return repository.findByType(type);
+    }
+
+    private Movie map(MovieRequest dto) {
+        return new Movie(
+                dto.title(),
+                dto.description(),
+                dto.director(),
+                dto.language(),
+                dto.releaseDate(),
+                dto.duration(),
+                dto.type(),
+                categoryService.findById(dto.categoryId()),
+                authorService.createAll(dto.authors()),
+                dto.country()
+        );
     }
 
 //    @Override

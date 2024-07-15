@@ -1,5 +1,6 @@
 package dev.codex.cinestar.Movie.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class Category {
     private String description;
 
     @OneToMany(mappedBy = "category", orphanRemoval = true, cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Movie> movies;
 
     public Category(String name, String description) {
