@@ -1,6 +1,8 @@
 package dev.codex.cinestar.Movie.Domain.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.codex.cinestar.Movie.Domain.ValueObjects.MovieType;
+import dev.codex.cinestar.Schedule.Domain.Entities.Schedule;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -46,6 +48,10 @@ public class Movie {
 
     @ManyToMany(mappedBy = "movies", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Author> authors;
+
+    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Schedule> schedules;
 
     public Movie(String title, String description, String director, String language, Date releaseYear, String duration, MovieType type, Category category, List<Author> authors, String country) {
         this.title = title;
