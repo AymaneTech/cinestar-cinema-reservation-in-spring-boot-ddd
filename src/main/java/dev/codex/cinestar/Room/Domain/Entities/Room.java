@@ -25,4 +25,10 @@ public class Room {
 
     @OneToMany(mappedBy = "room", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Zone> zones;
+
+    public Room(String name, Long capacity) {
+        this.name = name;
+        this.capacity = capacity;
+        this.zones = zones;
+    }
 }

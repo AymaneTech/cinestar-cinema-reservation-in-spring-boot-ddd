@@ -34,4 +34,13 @@ public class Zone {
     @JoinColumn(name = "room_id")
     @JsonIgnore
     private Room room;
+
+    public Zone(String name, String description, Long capacity, Long price, ZonePosition position, Room room) {
+        this.name = name;
+        this.description = description;
+        this.capacity = capacity;
+        this.price = price;
+        this.position = position;
+        this.room = room;
+    }
 }
