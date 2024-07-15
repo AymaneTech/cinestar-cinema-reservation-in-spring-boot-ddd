@@ -3,10 +3,10 @@ package dev.codex.cinestar.Movie.Interfaces.Web;
 import dev.codex.cinestar.Movie.Application.Dtos.CategoryRequest;
 import dev.codex.cinestar.Movie.Application.Services.CategoryService;
 import dev.codex.cinestar.Movie.Domain.Category;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,13 +29,13 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<Category> create(@RequestBody @Validated CategoryRequest dto) {
+    public ResponseEntity<Category> create(@RequestBody @Valid CategoryRequest dto) {
         Category createdCategory = service.create(dto);
         return new ResponseEntity<>(createdCategory, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody @Validated CategoryRequest dto) {
+    public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody @Valid CategoryRequest dto) {
         return ResponseEntity.ok(service.update(id, dto));
     }
 

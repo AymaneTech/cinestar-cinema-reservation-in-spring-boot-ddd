@@ -4,10 +4,10 @@ import dev.codex.cinestar.Movie.Application.Dtos.MovieRequest;
 import dev.codex.cinestar.Movie.Application.Services.MovieService;
 import dev.codex.cinestar.Movie.Domain.Movie;
 import dev.codex.cinestar.Movie.Domain.MovieType;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public class MovieController {
         Movie movie = service.findById(id);
         return ResponseEntity.ok(movie);
     }
-    
+
     @GetMapping("/filter/title")
     public ResponseEntity<List<Movie>> filterByTitle(@RequestParam String title) {
         List<Movie> movies = service.filterByTitle(title);
@@ -50,13 +50,13 @@ public class MovieController {
     }
 
     @PostMapping
-    public ResponseEntity<Movie> create(@RequestBody @Validated MovieRequest dto) {
+    public ResponseEntity<Movie> create(@RequestBody @Valid MovieRequest dto) {
         Movie createdMovie = service.create(dto);
         return new ResponseEntity<>(createdMovie, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Movie> update(@PathVariable Long id, @RequestBody @Validated MovieRequest dto) {
+    public ResponseEntity<Movie> update(@PathVariable Long id, @RequestBody @Valid MovieRequest dto) {
         Movie movie = service.update(id, dto);
         return ResponseEntity.ok(movie);
     }
