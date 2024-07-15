@@ -1,7 +1,6 @@
 package dev.codex.cinestar.Movie.Infrastructure;
 
 import dev.codex.cinestar.Movie.Domain.Entities.Category;
-import dev.codex.cinestar.Movie.Domain.Exceptions.CategoryNotFoundException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
