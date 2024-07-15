@@ -26,28 +26,31 @@ class CategoryRepositoryTest {
     }
 
     @Test
-    @DisplayName("It should return catetgory")
+    @DisplayName("It should return category by name")
     void itShouldReturnCategoryByName() {
         // Arrange
         String name = "Action";
-        Category actual = new Category(name, "Action movies");
-        sut.save(actual);
+        String description = "Action movies";
+        Category expected = new Category(name, description);
+        sut.save(expected);
         // Act
         Optional<Category> result = sut.findByName(name);
         // Assert
-        assertThat(result.get().getName()).isEqualTo(name);
+        assertTrue(result.isPresent());
+        Category actual = result.get();
+        assertThat(actual.getName()).isEqualTo(name);
+        assertThat(actual.getDescription()).isEqualTo(description);
     }
 
+
     @Test
-    @DisplayName("It should throw exception when category not found")
-    void itShouldThrowExceptionWhenCategoryNotFound() {
+    @DisplayName("It should return empty Optional when category not found")
+    void itShouldReturnEmptyOptionalWhenCategoryNotFound() {
         // Arrange
         String name = "Action";
         // Act
-        Optional<Category> actual = sut.findByName(name);
+        Optional<Category> result = sut.findByName(name);
         // Assert
-        assertThrows(CategoryNotFoundException.class, () -> {
-            actual.orElseThrow(() -> new CategoryNotFoundException(name));
-        });
+        assertTrue(result.isEmpty());
     }
 }
