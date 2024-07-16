@@ -39,7 +39,7 @@ class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie update(Long id, MovieRequest dto) {
-        Movie existingMovie = repository.findById(id)
+        final Movie existingMovie = repository.findById(id)
                 .orElseThrow(() -> new MovieNotFoundException(id));
         existingMovie.setTitle(dto.title());
         existingMovie.setDescription(dto.description());
@@ -68,7 +68,7 @@ class MovieServiceImpl implements MovieService {
 
     @Override
     public List<Movie> filterByCategory(String categoryName) {
-        Category category = categoryService.findByName(categoryName);
+        final Category category = categoryService.findByName(categoryName);
         return repository.findByCategory(category);
     }
 

@@ -20,25 +20,25 @@ public class RoomController {
 
     @GetMapping
     public ResponseEntity<List<Room>> findAll() {
-        List<Room> rooms = roomService.findAll();
+        final List<Room> rooms = roomService.findAll();
         return ResponseEntity.ok(rooms);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Room> findById(@PathVariable Long id) {
-        Room room = roomService.findById(id);
+        final Room room = roomService.findById(id);
         return ResponseEntity.ok(room);
     }
 
     @PostMapping
     public ResponseEntity<Room> create(@RequestBody @Valid RoomRequest dto) {
-        Room createdRoom = roomService.create(dto);
+        final Room createdRoom = roomService.create(dto);
         return new ResponseEntity<>(createdRoom, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Room> update(@PathVariable Long id, @RequestBody @Valid RoomRequest dto) {
-        Room room = roomService.update(id, dto);
+        final Room room = roomService.update(id, dto);
         return ResponseEntity.ok(room);
     }
 

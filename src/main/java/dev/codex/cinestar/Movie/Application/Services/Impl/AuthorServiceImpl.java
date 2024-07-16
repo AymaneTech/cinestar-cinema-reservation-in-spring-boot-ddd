@@ -17,20 +17,20 @@ class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository repository;
 
     public List<Author> createAll(List<AuthorRequest> authors) {
-        List<Author> authorList = authors.stream()
+        final List<Author> authorList = authors.stream()
                 .map(author -> new Author(author.name()))
                 .toList();
         return repository.saveAll(authorList);
     }
 
     public List<Author> sync(List<AuthorRequest> requestAuthors) {
-        List<Author> existingAuthors = repository.findAll();
-        Map<String, Author> existingAuthorsMap = existingAuthors.stream()
+        final List<Author> existingAuthors = repository.findAll();
+        final Map<String, Author> existingAuthorsMap = existingAuthors.stream()
                 .collect(Collectors.toMap(Author::getName, author -> author));
 
-        List<Author> authorsToSave = requestAuthors.stream()
+        final List<Author> authorsToSave = requestAuthors.stream()
                 .map(requestAuthor -> {
-                    Author existingAuthor = existingAuthorsMap.get(requestAuthor.name());
+                    final Author existingAuthor = existingAuthorsMap.get(requestAuthor.name());
                     if (existingAuthor != null) {
                         existingAuthor.setName(requestAuthor.name());
                         return existingAuthor;

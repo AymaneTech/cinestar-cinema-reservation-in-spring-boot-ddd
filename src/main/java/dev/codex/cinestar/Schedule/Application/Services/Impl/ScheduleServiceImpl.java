@@ -37,10 +37,10 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public Schedule create(ScheduleRequest request) {
-        Movie movie = findById(request.movieId(), movieService);
-        Room room = findById(request.roomId(), roomService);
+        final Movie movie = findById(request.movieId(), movieService);
+        final Room room = findById(request.roomId(), roomService);
 
-        Schedule schedule = new Schedule(
+        final Schedule schedule = new Schedule(
                 movie,
                 room,
                 request.status(),
@@ -54,10 +54,10 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public Schedule update(Long id, ScheduleRequest request) {
-        Schedule schedule = repository.findById(id)
+        final Schedule schedule = repository.findById(id)
                 .orElseThrow(() -> new ScheduleNotFoundException(id));
-        Movie movie = findById(request.movieId(), movieService);
-        Room room = findById(request.roomId(), roomService);
+        final Movie movie = findById(request.movieId(), movieService);
+        final Room room = findById(request.roomId(), roomService);
 
         schedule.setMovie(movie);
         schedule.setRoom(room);

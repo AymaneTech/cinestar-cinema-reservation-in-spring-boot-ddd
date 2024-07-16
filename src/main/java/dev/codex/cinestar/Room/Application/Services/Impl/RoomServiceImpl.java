@@ -32,21 +32,21 @@ class RoomServiceImpl implements RoomService {
 
     @Override
     public Room create(RoomRequest request) {
-        Room room = new Room(
+        final Room room = new Room(
                 request.name(),
                 request.capacity()
         );
-        Room savedRoom = repository.save(room);
-        List<Zone> zones = zoneService.createAll(request.zones(), savedRoom);
+        final Room savedRoom = repository.save(room);
+        final List<Zone> zones = zoneService.createAll(request.zones(), savedRoom);
         savedRoom.setZones(zones);
         return savedRoom;
     }
 
     @Override
     public Room update(Long id, RoomRequest request) {
-        Room room = repository.findById(id)
+        final Room room = repository.findById(id)
                 .orElseThrow(() -> new RoomNotFoundException(id));
-        List<Zone> zones = zoneService.sync(request.zones(), room);
+        final List<Zone> zones = zoneService.sync(request.zones(), room);
         room.setName(request.name());
         room.setCapacity(request.capacity());
         room.setZones(zones);

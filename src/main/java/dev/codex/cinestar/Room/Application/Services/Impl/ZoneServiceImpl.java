@@ -19,7 +19,7 @@ class ZoneServiceImpl implements ZoneService {
     private final ZoneRepository repository;
 
     public List<Zone> createAll(List<ZoneRequest> zones, Room room) {
-        List<Zone> zoneList = zones.stream()
+        final List<Zone> zoneList = zones.stream()
                 .map(zone -> new Zone(
                                 zone.name(),
                                 zone.description(),
@@ -34,13 +34,13 @@ class ZoneServiceImpl implements ZoneService {
     }
 
     public List<Zone> sync(List<ZoneRequest> requestZones, Room room) {
-        List<Zone> existingZones = repository.findAll();
-        Map<String, Zone> existingZonesMap = existingZones.stream()
+        final List<Zone> existingZones = repository.findAll();
+        final Map<String, Zone> existingZonesMap = existingZones.stream()
                 .collect(Collectors.toMap(Zone::getName, zone -> zone));
 
-        List<Zone> zonesToSave = requestZones.stream()
+        final List<Zone> zonesToSave = requestZones.stream()
                 .map(requestZone -> {
-                    Zone existingZone = existingZonesMap.get(requestZone.name());
+                    final Zone existingZone = existingZonesMap.get(requestZone.name());
                     if (existingZone != null) {
                         existingZone.setName(requestZone.name());
                         return existingZone;

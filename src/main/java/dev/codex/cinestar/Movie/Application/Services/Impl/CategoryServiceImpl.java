@@ -35,13 +35,13 @@ class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category create(CategoryRequest dto) {
-        Category category = new Category(dto.name(), dto.description());
+        final Category category = new Category(dto.name(), dto.description());
         return repository.save(category);
     }
 
     @Override
     public Category update(Long id, CategoryRequest dto) {
-        Category category = repository.findById(id)
+        final Category category = repository.findById(id)
                 .orElseThrow(() -> new CategoryNotFoundException(id));
         category.setName(dto.name());
         category.setDescription(category.getDescription());
@@ -52,7 +52,6 @@ class CategoryServiceImpl implements CategoryService {
     public void delete(Long id) {
         if (!repository.existsById(id))
             throw new CategoryNotFoundException(id);
-
         repository.deleteById(id);
     }
 }
