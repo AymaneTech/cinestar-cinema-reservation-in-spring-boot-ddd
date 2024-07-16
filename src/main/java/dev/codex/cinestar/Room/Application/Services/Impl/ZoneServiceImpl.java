@@ -7,6 +7,7 @@ import dev.codex.cinestar.Room.Domain.Entities.Zone;
 import dev.codex.cinestar.Room.Infrastructure.ZoneRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ class ZoneServiceImpl implements ZoneService {
 
     private final ZoneRepository repository;
 
+    @Transactional
     public List<Zone> createAll(List<ZoneRequest> zones, Room room) {
         final List<Zone> zoneList = zones.stream()
                 .map(zone -> new Zone(
@@ -33,6 +35,7 @@ class ZoneServiceImpl implements ZoneService {
         return repository.saveAll(zoneList);
     }
 
+    @Transactional
     public List<Zone> sync(List<ZoneRequest> requestZones, Room room) {
         final List<Zone> existingZones = repository.findAll();
         final Map<String, Zone> existingZonesMap = existingZones.stream()

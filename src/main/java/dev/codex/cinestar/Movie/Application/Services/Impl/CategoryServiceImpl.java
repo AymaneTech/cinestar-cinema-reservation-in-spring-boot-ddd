@@ -7,6 +7,7 @@ import dev.codex.cinestar.Movie.Domain.Exceptions.CategoryNotFoundException;
 import dev.codex.cinestar.Movie.Infrastructure.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,12 +35,14 @@ class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Transactional
     public Category create(CategoryRequest dto) {
         final Category category = new Category(dto.name(), dto.description());
         return repository.save(category);
     }
 
     @Override
+    @Transactional
     public Category update(Long id, CategoryRequest dto) {
         final Category category = repository.findById(id)
                 .orElseThrow(() -> new CategoryNotFoundException(id));
@@ -49,6 +52,7 @@ class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         if (!repository.existsById(id))
             throw new CategoryNotFoundException(id);

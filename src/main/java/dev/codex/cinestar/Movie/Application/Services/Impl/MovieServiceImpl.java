@@ -10,6 +10,7 @@ import dev.codex.cinestar.Movie.Domain.ValueObjects.MovieType;
 import dev.codex.cinestar.Movie.Infrastructure.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -32,12 +33,14 @@ class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    @Transactional
     public Movie create(MovieRequest dto) {
         Movie movie = map(dto);
         return repository.save(movie);
     }
 
     @Override
+    @Transactional
     public Movie update(Long id, MovieRequest dto) {
         final Movie existingMovie = repository.findById(id)
                 .orElseThrow(() -> new MovieNotFoundException(id));
@@ -55,6 +58,7 @@ class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         if (!repository.existsById(id))
             throw new MovieNotFoundException(id);

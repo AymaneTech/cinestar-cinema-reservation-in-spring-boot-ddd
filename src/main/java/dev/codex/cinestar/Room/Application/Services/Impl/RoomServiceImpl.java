@@ -9,6 +9,7 @@ import dev.codex.cinestar.Room.Domain.Exceptions.RoomNotFoundException;
 import dev.codex.cinestar.Room.Infrastructure.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    @Transactional
     public Room create(RoomRequest request) {
         final Room room = new Room(
                 request.name(),
@@ -43,6 +45,7 @@ class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    @Transactional
     public Room update(Long id, RoomRequest request) {
         final Room room = repository.findById(id)
                 .orElseThrow(() -> new RoomNotFoundException(id));
@@ -54,6 +57,7 @@ class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         if (!repository.existsById(id))
             throw new RoomNotFoundException(id);
