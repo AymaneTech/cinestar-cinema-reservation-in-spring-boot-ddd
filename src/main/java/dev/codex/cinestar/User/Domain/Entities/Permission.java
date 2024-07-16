@@ -21,7 +21,7 @@ public class Permission {
 
     private String name;
 
-    @ManyToMany(mappedBy = "permissions", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "role_permissions",
             joinColumns = @JoinColumn(name = "permission_id"),
@@ -29,4 +29,8 @@ public class Permission {
     )
     @JsonIgnore
     private List<Role> roles;
+
+    public Permission(String name) {
+        this.name = name;
+    }
 }

@@ -24,4 +24,7 @@ public class Role {
     @ManyToMany(mappedBy = "roles", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Permission> permissions;
 
+    public Role(String name) {
+        this.name = name;
+    }
 }
