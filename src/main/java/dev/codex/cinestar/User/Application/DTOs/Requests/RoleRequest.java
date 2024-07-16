@@ -14,6 +14,6 @@ public record RoleRequest(
         String name,
 
         @NotNull
-        List<Long> permissions
+        List<Long> permissionIds
 ) implements Serializable {
 }
