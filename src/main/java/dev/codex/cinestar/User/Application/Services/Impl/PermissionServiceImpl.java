@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class PermissionServiceImpl implements PermissionService {
+class PermissionServiceImpl implements PermissionService {
     private final PermissionRepository repository;
 
     public List<Permission> findAll() {

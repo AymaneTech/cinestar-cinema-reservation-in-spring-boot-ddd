@@ -18,7 +18,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ScheduleServiceImpl implements ScheduleService {
+class ScheduleServiceImpl implements ScheduleService {
 
     private final ScheduleRepository repository;
 

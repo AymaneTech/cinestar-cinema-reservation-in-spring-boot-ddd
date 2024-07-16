@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+class UserServiceImpl implements UserService {
     private final UserRepository repository;
     private final RoleService roleService;
 //    private final  passwordEncoder; // Todo: Add passwordEncoder
