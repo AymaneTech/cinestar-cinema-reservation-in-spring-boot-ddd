@@ -22,7 +22,7 @@ public class Author {
 
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "author_movie",
             joinColumns = @JoinColumn(name = "author_id"),

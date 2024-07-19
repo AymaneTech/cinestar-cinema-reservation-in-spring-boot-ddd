@@ -14,6 +14,5 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> findByCategory(Category category);
 
     List<Movie> findByType(MovieType type);
-
 //    List<Movie> findByAuthor(Author author);
 }
