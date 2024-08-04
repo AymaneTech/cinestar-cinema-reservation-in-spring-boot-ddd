@@ -1,21 +1,24 @@
 package dev.codex.cinestar.Movie.Application.Services.Impl;
 
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import dev.codex.cinestar.Movie.Application.DTOs.Requests.CategoryRequest;
 import dev.codex.cinestar.Movie.Application.Services.CategoryService;
 import dev.codex.cinestar.Movie.Domain.Entities.Category;
 import dev.codex.cinestar.Movie.Domain.Exceptions.CategoryNotFoundException;
 import dev.codex.cinestar.Movie.Infrastructure.CategoryRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository repository;
+    private final ModelMapper modelMapper;
 
     @Override
     public List<Category> findAll() {
@@ -37,7 +40,8 @@ class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional
     public Category create(CategoryRequest dto) {
-        final Category category = new Category(dto.name(), dto.description());
+        final Category category = modelMapper.map(dto, Category.class);
+        System.out.println("here is the mapping result test again baqi mamtye9ch = " + category);
         return repository.save(category);
     }
 

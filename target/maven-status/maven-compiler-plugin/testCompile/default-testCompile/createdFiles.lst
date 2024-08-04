@@ -1,0 +1,5 @@
+dev/codex/cinestar/Movie/Infrastructure/TestConfig.class
+dev/codex/cinestar/Movie/Infrastructure/CategoryRepositoryTest.class
+dev/codex/cinestar/Movie/Infrastructure/MovieRepositoryTest.class
+dev/codex/cinestar/ModularityTests.class
+dev/codex/cinestar/CineStarSpringBootApplicationTests.class

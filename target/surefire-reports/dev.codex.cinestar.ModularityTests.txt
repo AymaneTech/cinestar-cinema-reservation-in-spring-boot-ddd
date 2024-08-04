@@ -1,0 +1,129 @@
+-------------------------------------------------------------------------------
+Test set: dev.codex.cinestar.ModularityTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.626 s <<< FAILURE! -- in dev.codex.cinestar.ModularityTests
+dev.codex.cinestar.ModularityTests.modulesShouldBeDefined -- Time elapsed: 0.202 s <<< ERROR!
+org.springframework.modulith.core.Violations: 
+- Cycle detected: Slice Movie -> 
+                Slice Schedule -> 
+                Slice Movie
+  1. Dependencies of Slice Movie
+    - Field <dev.codex.cinestar.Movie.Domain.Entities.Movie.schedules> has generic type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Movie.java:0)
+    - Method <dev.codex.cinestar.Movie.Domain.Entities.Movie.getSchedules()> has generic return type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Movie.java:0)
+    - Method <dev.codex.cinestar.Movie.Domain.Entities.Movie.setSchedules(java.util.List)> has generic parameter type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Movie.java:0)
+  2. Dependencies of Slice Schedule
+    - Constructor <dev.codex.cinestar.Schedule.Application.Services.Impl.ScheduleServiceImpl.<init>(dev.codex.cinestar.Schedule.Infrastructure.ScheduleRepository, dev.codex.cinestar.Movie.Application.Services.MovieService, dev.codex.cinestar.Room.Application.Services.RoomService)> has parameter of type <dev.codex.cinestar.Movie.Application.Services.MovieService> in (ScheduleServiceImpl.java:0)
+    - Constructor <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.<init>(dev.codex.cinestar.Movie.Domain.Entities.Movie, dev.codex.cinestar.Room.Domain.Entities.Room, dev.codex.cinestar.Schedule.Domain.ValueObjects.ScheduleStatus, java.util.Date, java.lang.String, java.lang.String, java.lang.Boolean)> has parameter of type <dev.codex.cinestar.Movie.Domain.Entities.Movie> in (Schedule.java:0)
+    - Field <dev.codex.cinestar.Schedule.Application.Services.Impl.ScheduleServiceImpl.movieService> has type <dev.codex.cinestar.Movie.Application.Services.MovieService> in (ScheduleServiceImpl.java:0)
+    - Field <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.movie> has type <dev.codex.cinestar.Movie.Domain.Entities.Movie> in (Schedule.java:0)
+    - Method <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.getMovie()> has return type <dev.codex.cinestar.Movie.Domain.Entities.Movie> in (Schedule.java:0)
+    - Method <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.setMovie(dev.codex.cinestar.Movie.Domain.Entities.Movie)> has parameter of type <dev.codex.cinestar.Movie.Domain.Entities.Movie> in (Schedule.java:0)
+- Cycle detected: Slice Room -> 
+                Slice Schedule -> 
+                Slice Room
+  1. Dependencies of Slice Room
+    - Field <dev.codex.cinestar.Room.Domain.Entities.Room.schedule> has generic type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Room.java:0)
+    - Method <dev.codex.cinestar.Room.Domain.Entities.Room.getSchedule()> has generic return type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Room.java:0)
+    - Method <dev.codex.cinestar.Room.Domain.Entities.Room.setSchedule(java.util.List)> has generic parameter type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Room.java:0)
+  2. Dependencies of Slice Schedule
+    - Constructor <dev.codex.cinestar.Schedule.Application.Services.Impl.ScheduleServiceImpl.<init>(dev.codex.cinestar.Schedule.Infrastructure.ScheduleRepository, dev.codex.cinestar.Movie.Application.Services.MovieService, dev.codex.cinestar.Room.Application.Services.RoomService)> has parameter of type <dev.codex.cinestar.Room.Application.Services.RoomService> in (ScheduleServiceImpl.java:0)
+    - Constructor <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.<init>(dev.codex.cinestar.Movie.Domain.Entities.Movie, dev.codex.cinestar.Room.Domain.Entities.Room, dev.codex.cinestar.Schedule.Domain.ValueObjects.ScheduleStatus, java.util.Date, java.lang.String, java.lang.String, java.lang.Boolean)> has parameter of type <dev.codex.cinestar.Room.Domain.Entities.Room> in (Schedule.java:0)
+    - Field <dev.codex.cinestar.Schedule.Application.Services.Impl.ScheduleServiceImpl.roomService> has type <dev.codex.cinestar.Room.Application.Services.RoomService> in (ScheduleServiceImpl.java:0)
+    - Field <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.room> has type <dev.codex.cinestar.Room.Domain.Entities.Room> in (Schedule.java:0)
+    - Method <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.getRoom()> has return type <dev.codex.cinestar.Room.Domain.Entities.Room> in (Schedule.java:0)
+    - Method <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.setRoom(dev.codex.cinestar.Room.Domain.Entities.Room)> has parameter of type <dev.codex.cinestar.Room.Domain.Entities.Room> in (Schedule.java:0)
+- Module 'Movie' depends on non-exposed type dev.codex.cinestar.Schedule.Domain.Entities.Schedule within module 'Schedule'!
+Field <dev.codex.cinestar.Movie.Domain.Entities.Movie.schedules> has generic type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Movie.java:0)
+- Module 'Movie' depends on non-exposed type dev.codex.cinestar.Schedule.Domain.Entities.Schedule within module 'Schedule'!
+Method <dev.codex.cinestar.Movie.Domain.Entities.Movie.getSchedules()> has generic return type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Movie.java:0)
+- Module 'Movie' depends on non-exposed type dev.codex.cinestar.Schedule.Domain.Entities.Schedule within module 'Schedule'!
+Method <dev.codex.cinestar.Movie.Domain.Entities.Movie.setSchedules(java.util.List)> has generic parameter type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Movie.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Movie.Application.Services.MovieService within module 'Movie'!
+ScheduleServiceImpl declares constructor ScheduleServiceImpl(ScheduleRepository, MovieService, RoomService) in (ScheduleServiceImpl.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Room.Application.Services.RoomService within module 'Room'!
+ScheduleServiceImpl declares constructor ScheduleServiceImpl(ScheduleRepository, MovieService, RoomService) in (ScheduleServiceImpl.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Room.Application.Services.RoomService within module 'Room'!
+Field <dev.codex.cinestar.Schedule.Application.Services.Impl.ScheduleServiceImpl.roomService> has type <dev.codex.cinestar.Room.Application.Services.RoomService> in (ScheduleServiceImpl.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Movie.Application.Services.MovieService within module 'Movie'!
+Field <dev.codex.cinestar.Schedule.Application.Services.Impl.ScheduleServiceImpl.movieService> has type <dev.codex.cinestar.Movie.Application.Services.MovieService> in (ScheduleServiceImpl.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Movie.Application.Services.MovieService within module 'Movie'!
+Constructor <dev.codex.cinestar.Schedule.Application.Services.Impl.ScheduleServiceImpl.<init>(dev.codex.cinestar.Schedule.Infrastructure.ScheduleRepository, dev.codex.cinestar.Movie.Application.Services.MovieService, dev.codex.cinestar.Room.Application.Services.RoomService)> has parameter of type <dev.codex.cinestar.Movie.Application.Services.MovieService> in (ScheduleServiceImpl.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Room.Application.Services.RoomService within module 'Room'!
+Constructor <dev.codex.cinestar.Schedule.Application.Services.Impl.ScheduleServiceImpl.<init>(dev.codex.cinestar.Schedule.Infrastructure.ScheduleRepository, dev.codex.cinestar.Movie.Application.Services.MovieService, dev.codex.cinestar.Room.Application.Services.RoomService)> has parameter of type <dev.codex.cinestar.Room.Application.Services.RoomService> in (ScheduleServiceImpl.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Room.Domain.Entities.Room within module 'Room'!
+Room declares parameter Room.setRoom(Room) in (Schedule.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Movie.Domain.Entities.Movie within module 'Movie'!
+Movie declares parameter Movie.setMovie(Movie) in (Schedule.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Movie.Domain.Entities.Movie within module 'Movie'!
+Movie declares return type Movie.getMovie() in (Schedule.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Room.Domain.Entities.Room within module 'Room'!
+Room declares return type Room.getRoom() in (Schedule.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Movie.Domain.Entities.Movie within module 'Movie'!
+Field <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.movie> has type <dev.codex.cinestar.Movie.Domain.Entities.Movie> in (Schedule.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Room.Domain.Entities.Room within module 'Room'!
+Field <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.room> has type <dev.codex.cinestar.Room.Domain.Entities.Room> in (Schedule.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Movie.Domain.Entities.Movie within module 'Movie'!
+Method <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.getMovie()> has return type <dev.codex.cinestar.Movie.Domain.Entities.Movie> in (Schedule.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Room.Domain.Entities.Room within module 'Room'!
+Method <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.getRoom()> has return type <dev.codex.cinestar.Room.Domain.Entities.Room> in (Schedule.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Room.Domain.Entities.Room within module 'Room'!
+Method <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.setRoom(dev.codex.cinestar.Room.Domain.Entities.Room)> has parameter of type <dev.codex.cinestar.Room.Domain.Entities.Room> in (Schedule.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Movie.Domain.Entities.Movie within module 'Movie'!
+Method <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.setMovie(dev.codex.cinestar.Movie.Domain.Entities.Movie)> has parameter of type <dev.codex.cinestar.Movie.Domain.Entities.Movie> in (Schedule.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Movie.Domain.Entities.Movie within module 'Movie'!
+Constructor <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.<init>(dev.codex.cinestar.Movie.Domain.Entities.Movie, dev.codex.cinestar.Room.Domain.Entities.Room, dev.codex.cinestar.Schedule.Domain.ValueObjects.ScheduleStatus, java.util.Date, java.lang.String, java.lang.String, java.lang.Boolean)> has parameter of type <dev.codex.cinestar.Movie.Domain.Entities.Movie> in (Schedule.java:0)
+- Module 'Schedule' depends on non-exposed type dev.codex.cinestar.Room.Domain.Entities.Room within module 'Room'!
+Constructor <dev.codex.cinestar.Schedule.Domain.Entities.Schedule.<init>(dev.codex.cinestar.Movie.Domain.Entities.Movie, dev.codex.cinestar.Room.Domain.Entities.Room, dev.codex.cinestar.Schedule.Domain.ValueObjects.ScheduleStatus, java.util.Date, java.lang.String, java.lang.String, java.lang.Boolean)> has parameter of type <dev.codex.cinestar.Room.Domain.Entities.Room> in (Schedule.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.Schedule.Domain.Entities.Schedule within module 'Schedule'!
+Schedule declares parameter Schedule.setSchedule(Schedule) in (Booking.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.User.Domain.Entities.User within module 'User'!
+User declares parameter User.setMember(User) in (Booking.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.User.Domain.Entities.User within module 'User'!
+User declares return type User.getMember() in (Booking.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.Schedule.Domain.Entities.Schedule within module 'Schedule'!
+Schedule declares return type Schedule.getSchedule() in (Booking.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.User.Domain.Entities.User within module 'User'!
+Field <dev.codex.cinestar.Booking.Domain.Entities.Booking.member> has type <dev.codex.cinestar.User.Domain.Entities.User> in (Booking.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.Schedule.Domain.Entities.Schedule within module 'Schedule'!
+Field <dev.codex.cinestar.Booking.Domain.Entities.Booking.schedule> has type <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Booking.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.User.Domain.Entities.User within module 'User'!
+Method <dev.codex.cinestar.Booking.Domain.Entities.Booking.getMember()> has return type <dev.codex.cinestar.User.Domain.Entities.User> in (Booking.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.Schedule.Domain.Entities.Schedule within module 'Schedule'!
+Method <dev.codex.cinestar.Booking.Domain.Entities.Booking.getSchedule()> has return type <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Booking.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.Schedule.Domain.Entities.Schedule within module 'Schedule'!
+Method <dev.codex.cinestar.Booking.Domain.Entities.Booking.setSchedule(dev.codex.cinestar.Schedule.Domain.Entities.Schedule)> has parameter of type <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Booking.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.User.Domain.Entities.User within module 'User'!
+Method <dev.codex.cinestar.Booking.Domain.Entities.Booking.setMember(dev.codex.cinestar.User.Domain.Entities.User)> has parameter of type <dev.codex.cinestar.User.Domain.Entities.User> in (Booking.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.Room.Domain.Entities.Zone within module 'Room'!
+Zone declares parameter Zone(Long, Long, Zone) in (Seat.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.Room.Domain.Entities.Zone within module 'Room'!
+Zone declares return type Zone.zone() in (Seat.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.Room.Domain.Entities.Zone within module 'Room'!
+Field <dev.codex.cinestar.Booking.Domain.Entities.Seat.zone> has type <dev.codex.cinestar.Room.Domain.Entities.Zone> in (Seat.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.Room.Domain.Entities.Zone within module 'Room'!
+Method <dev.codex.cinestar.Booking.Domain.Entities.Seat.zone()> has return type <dev.codex.cinestar.Room.Domain.Entities.Zone> in (Seat.java:0)
+- Module 'Booking' depends on non-exposed type dev.codex.cinestar.Room.Domain.Entities.Zone within module 'Room'!
+Constructor <dev.codex.cinestar.Booking.Domain.Entities.Seat.<init>(java.lang.Long, java.lang.Long, dev.codex.cinestar.Room.Domain.Entities.Zone)> has parameter of type <dev.codex.cinestar.Room.Domain.Entities.Zone> in (Seat.java:0)
+- Module 'Room' depends on non-exposed type dev.codex.cinestar.Schedule.Domain.Entities.Schedule within module 'Schedule'!
+Field <dev.codex.cinestar.Room.Domain.Entities.Room.schedule> has generic type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Room.java:0)
+- Module 'Room' depends on non-exposed type dev.codex.cinestar.Schedule.Domain.Entities.Schedule within module 'Schedule'!
+Method <dev.codex.cinestar.Room.Domain.Entities.Room.getSchedule()> has generic return type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Room.java:0)
+- Module 'Room' depends on non-exposed type dev.codex.cinestar.Schedule.Domain.Entities.Schedule within module 'Schedule'!
+Method <dev.codex.cinestar.Room.Domain.Entities.Room.setSchedule(java.util.List)> has generic parameter type <java.util.List<dev.codex.cinestar.Schedule.Domain.Entities.Schedule>> with type argument depending on <dev.codex.cinestar.Schedule.Domain.Entities.Schedule> in (Room.java:0)
+	at org.springframework.modulith.core.Violations.and(Violations.java:144)
+	at java.base/java.util.stream.ReduceOps$1ReducingSink.accept(ReduceOps.java:80)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.HashMap$ValueSpliterator.forEachRemaining(HashMap.java:1787)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.reduce(ReferencePipeline.java:657)
+	at org.springframework.modulith.core.ApplicationModules.detectViolations(ApplicationModules.java:460)
+	at org.springframework.modulith.core.ApplicationModules.verify(ApplicationModules.java:425)
+	at dev.codex.cinestar.ModularityTests.modulesShouldBeDefined(ModularityTests.java:15)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+

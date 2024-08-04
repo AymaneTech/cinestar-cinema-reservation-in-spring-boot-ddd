@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: CineStar
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cinestar_db
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+#app:
+#  jwt:
+#    secret: 883e807d7ee46bfd82464d697b0e6455d32b8406c6ee3a36e4a97de7ab976196
